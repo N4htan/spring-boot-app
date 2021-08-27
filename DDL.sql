@@ -2,7 +2,6 @@ create schema spring;
 
 use spring;
 
-
 create user 'user'@'localhost' identified by 'sistem@';
 
 grant select, insert, delete, update on spring.* to user@'localhost';
