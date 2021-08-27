@@ -8,13 +8,13 @@ create user 'user'@'localhost' identified by 'sistem@';
 grant select, insert, delete, update on spring.* to user@'localhost';
 
 
-create table usr_usuario {
+create table usr_usuario (
 	usr_id bigint unsigned not null auto_increment,
 	usr_nome varchar (20) not null,
 	usr_senha varchar (50) not null,
 	primary key (usr_id),
 	unique key uni_usuario_nome (usr_nome)	
-};
+);
 
 create table aut_autorizacao (
   aut_id bigint unsigned not null auto_increment,
