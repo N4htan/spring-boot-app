@@ -9,12 +9,11 @@ grant select, insert, delete, update on spring.* to user@'localhost';
 
 
 create table usr_usuario {
-	user_id bigint unsigned not null auto_increment,
-	user_nome varchar (20) not null,
-	user_senha varchar (50) not null,
-	primary key (userr_id),
-	unique key uni_usuario_nome (user_nome)
-	
+	usr_id bigint unsigned not null auto_increment,
+	usr_nome varchar (20) not null,
+	usr_senha varchar (50) not null,
+	primary key (usr_id),
+	unique key uni_usuario_nome (usr_nome)	
 };
 
 create table aut_autorizacao (
@@ -25,9 +24,9 @@ create table aut_autorizacao (
 );
 
 create table uau_usuario_autorizacao (
-  user_id bigint unsigned not null,
+  usr_id bigint unsigned not null,
   aut_id bigint unsigned not null,
   primary key (user_id, aut_id),
-  foreign key aut_usuario_fk (user_id) references usr_usuario (user_id) on delete restrict on update cascade,
+  foreign key aut_usuario_fk (usr_id) references usr_usuario (usr_id) on delete restrict on update cascade,
   foreign key aut_autorizacao_fk (aut_id) references aut_autorizacao (aut_id) on delete restrict on update cascade
 );
