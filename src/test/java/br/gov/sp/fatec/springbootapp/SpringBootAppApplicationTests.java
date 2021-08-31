@@ -47,6 +47,6 @@ class SpringBootAppApplicationTests {
 		personagem.setNivel(1);
 		personagemRepo.save(personagem);
 		
-		assertFalse(personagemRepo.findByNomeContainsOrNivelContains("pro", 1).isEmpty());
+		assertFalse(personagemRepo.findByNomeContainsOrNivel("pro", 1).isEmpty());
 	}
 }

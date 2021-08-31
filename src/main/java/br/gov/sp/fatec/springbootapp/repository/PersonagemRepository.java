@@ -10,6 +10,6 @@ public interface PersonagemRepository extends JpaRepository<Personagem, Long>{
 
     public Personagem findByNome(String nome);
 
-    public List<Personagem> findByNomeContainsOrNivelContains(String nome, int nivel);
+    public List<Personagem> findByNomeContainsOrNivel(String nome, Integer nivel);
 
 }
