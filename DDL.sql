@@ -1,14 +1,10 @@
 create schema biografia;
 
-create user 'user'@'localhost' identified by 'sistem@';
+create user 'user'@'localhost' identified by 'pass123';
 
-<<<<<<< HEAD
 grant select, insert, delete, update on biografia.* to user@'localhost';
 
 use biografia;
-=======
-create user 'user'@'localhost' identified by 'sistem@';
->>>>>>> ce6a5263e87422971116a677d50d5265fe133612
 
 create table per_personagem (
     per_id bigint unsigned not null auto_increment,
@@ -28,7 +24,6 @@ create table hab_habilidade (
     unique key uni_habilidade_nome (hab_nome)
 );
 
-<<<<<<< HEAD
 create table pha_personagem_habilidade (
     per_id bigint unsigned not null,
     hab_id bigint unsigned not null,
@@ -60,14 +55,6 @@ create table usr_usuario (
     primary key (usr_id),
     unique key uni_usuario_nome (usr_nome),
     unique key uni_usuario_email (usr_email)
-=======
-create table usr_usuario (
-	usr_id bigint unsigned not null auto_increment,
-	usr_nome varchar (20) not null,
-	usr_senha varchar (50) not null,
-	primary key (usr_id),
-	unique key uni_usuario_nome (usr_nome)	
->>>>>>> ce6a5263e87422971116a677d50d5265fe133612
 );
 
 create table aut_autorizacao (
@@ -78,7 +65,6 @@ create table aut_autorizacao (
 );
 
 create table uau_usuario_autorizacao (
-<<<<<<< HEAD
     usr_id bigint unsigned not null,
     aut_id bigint unsigned not null,
     primary key (usr_id, aut_id),
@@ -89,11 +75,3 @@ create table uau_usuario_autorizacao (
         references aut_autorizacao (aut_id)
         on delete restrict on update cascade
 );
-=======
-  usr_id bigint unsigned not null,
-  aut_id bigint unsigned not null,
-  primary key (usr_id, aut_id),
-  foreign key aut_usuario_fk (usr_id) references usr_usuario (usr_id) on delete restrict on update cascade,
-  foreign key aut_autorizacao_fk (aut_id) references aut_autorizacao (aut_id) on delete restrict on update cascade
-);
->>>>>>> ce6a5263e87422971116a677d50d5265fe133612
