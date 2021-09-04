@@ -1,12 +1,17 @@
 package br.gov.sp.fatec.springbootapp.entity;
 
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -26,6 +31,12 @@ public class Personagem {
     
     @Column(name = "per_nivel")
     private int nivel;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "pha_personagem_habilidade",
+        joinColumns = { @JoinColumn(name = "per_id") },
+        inverseJoinColumns = { @JoinColumn(name = "hab_id") })
+    private Set<Habilidade> habilidades;
 
     public long getId() {
         return id;
@@ -59,4 +70,13 @@ public class Personagem {
         this.nivel = nivel;
     }
 
+    public Set<Habilidade> getHabilidades() {
+        return habilidades;
+    }
+
+    public void setHabilidades(Set<Habilidade> habilidades) {
+        this.habilidades = habilidades;
+    }
+
+    
 }
