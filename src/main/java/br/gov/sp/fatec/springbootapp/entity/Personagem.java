@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -37,6 +38,9 @@ public class Personagem {
         joinColumns = { @JoinColumn(name = "per_id") },
         inverseJoinColumns = { @JoinColumn(name = "hab_id") })
     private Set<Habilidade> habilidades;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "jogador")
+    private Set<Biografia> biografias;
 
     public long getId() {
         return id;
@@ -78,5 +82,12 @@ public class Personagem {
         this.habilidades = habilidades;
     }
 
+    public Set<Biografia> getBiografias() {
+        return biografias;
+    }
+
+    public void setBiografias(Set<Biografia> biografias) {
+        this.biografias = biografias;
+    }
     
 }

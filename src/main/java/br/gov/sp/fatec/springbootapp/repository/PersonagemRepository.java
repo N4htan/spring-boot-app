@@ -13,4 +13,6 @@ public interface PersonagemRepository extends JpaRepository<Personagem, Long>{
     public List<Personagem> findByNomeContainsOrNivel(String nome, Integer nivel);
 
     public List<Personagem> findByHabilidadesElemento(String elemento);
+
+    public List<Personagem> findByBiografiasEntrada(String entrada);
 }
