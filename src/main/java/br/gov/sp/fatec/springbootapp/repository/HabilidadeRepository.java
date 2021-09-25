@@ -9,5 +9,7 @@ import br.gov.sp.fatec.springbootapp.entity.Habilidade;
 public interface HabilidadeRepository extends JpaRepository<Habilidade, Long>{
 
     public List<Habilidade> findByPersonagensNome(String nome);
+
+    public Habilidade findByNome(String nome);
     
 }

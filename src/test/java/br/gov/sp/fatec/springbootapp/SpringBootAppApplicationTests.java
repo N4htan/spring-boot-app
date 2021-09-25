@@ -20,6 +20,7 @@ import br.gov.sp.fatec.springbootapp.entity.Personagem;
 import br.gov.sp.fatec.springbootapp.repository.BiografiaRepository;
 import br.gov.sp.fatec.springbootapp.repository.HabilidadeRepository;
 import br.gov.sp.fatec.springbootapp.repository.PersonagemRepository;
+import br.gov.sp.fatec.springbootapp.service.RPGService;
 
 @SpringBootTest
 @Transactional
@@ -34,6 +35,9 @@ class SpringBootAppApplicationTests {
 
 	@Autowired
 	private BiografiaRepository biografiaRepo;
+
+	@Autowired
+	private RPGService rpgService;
 
 	@Test
 	void contextLoads() {
@@ -148,4 +152,14 @@ class SpringBootAppApplicationTests {
 
 		assertFalse(personagemRepo.findByBiografiasEntrada("Uma faixa brilhante.").isEmpty());
 	}
+
+	@Test
+	void novoPerTest() throws ParseException{
+		rpgService.novoPersonagem("Mago", new SimpleDateFormat("dd/MM/yyyy").parse("12/16/2015"), 1, "Uma faixa brilhante passa de seu dedo indicador até um ponto que você escolhe dentro do alcance e então floresce com um rugido baixo em uma explosão de chamas.", "Fireball", "Fogo");
+		
+		assertNotNull(personagemRepo.findByNome("Mago"));
+	}
+
+
+
 }
