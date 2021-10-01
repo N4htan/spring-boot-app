@@ -14,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "bio_biografia")
 public class Biografia {
@@ -29,6 +31,7 @@ public class Biografia {
     @Column(name = "bio_entrada")
     private String entrada;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "per_id")
     private Personagem jogador;

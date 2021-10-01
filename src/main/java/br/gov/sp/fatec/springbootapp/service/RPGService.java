@@ -6,7 +6,7 @@ import java.util.List;
 import br.gov.sp.fatec.springbootapp.entity.Personagem;
 
 public interface RPGService {
-    public Personagem novoPersonagem(String nome, Date aniversario, int nivel, String descricao, String nomeHab, String elemento);
+    public Personagem novoPersonagem(String nome, int nivel, Date aniversario, String descricao, String nomeHab, String elemento);
 
     public List<Personagem> buscarTodosPersonagens();
 }

@@ -155,7 +155,7 @@ class SpringBootAppApplicationTests {
 
 	@Test
 	void novoPerTest() throws ParseException{
-		rpgService.novoPersonagem("Mago", new SimpleDateFormat("dd/MM/yyyy").parse("12/16/2015"), 1, "Uma faixa brilhante passa de seu dedo indicador até um ponto que você escolhe dentro do alcance e então floresce com um rugido baixo em uma explosão de chamas.", "Fireball", "Fogo");
+		rpgService.novoPersonagem("Mago", 1, new SimpleDateFormat("dd/MM/yyyy").parse("12/16/2015"), "Uma faixa brilhante passa de seu dedo indicador até um ponto que você escolhe dentro do alcance e então floresce com um rugido baixo em uma explosão de chamas.", "Fireball", "Fogo");
 		
 		assertNotNull(personagemRepo.findByNome("Mago"));
 	}

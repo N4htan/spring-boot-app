@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "hab_habilidade")
 public class Habilidade {
@@ -29,6 +31,7 @@ public class Habilidade {
     @Column(name = "hab_elemento")
     private String elemento;
 
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "habilidades")
     private Set<Personagem> personagens;
 

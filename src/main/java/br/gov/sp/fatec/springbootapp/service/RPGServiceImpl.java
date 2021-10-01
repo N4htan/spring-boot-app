@@ -22,7 +22,7 @@ public class RPGServiceImpl implements RPGService{
     HabilidadeRepository habilidadeRepo;
     
     @Transactional
-    public Personagem novoPersonagem(String nome, Date aniversario, int nivel, String descricao, String nomeHab, String elemento){
+    public Personagem novoPersonagem(String nome, int nivel, Date aniversario, String descricao, String nomeHab, String elemento){
         Habilidade habilidade = habilidadeRepo.findByNome(nomeHab);
         if(habilidade == null) {
             habilidade = new Habilidade();
