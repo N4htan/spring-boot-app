@@ -4,6 +4,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,11 +26,13 @@ public class PersonagemController {
     private RPGService rpgService;
 
     @GetMapping
+    @JsonView(View.PersonagemSimplificado.class)
     public List<Personagem> buscarTodosPersonagens() {
         return rpgService.buscarTodosPersonagens();        
     }
 
     @PostMapping
+    @JsonView(View.PersonagemCompleto.class)
     public Personagem novoPersonagem(@RequestBody Personagem personagem) throws ParseException{
         return rpgService.novoPersonagem(personagem.getNome(), personagem.getNivel(), new SimpleDateFormat("dd/MM/yyyy").parse("12/16/2015"), "HABILIDADE PADRAO", "PADRAO", "PADRAO");
     }

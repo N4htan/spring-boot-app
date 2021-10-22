@@ -11,7 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
+
+import br.gov.sp.fatec.springbootapp.controller.View;
 
 @Entity
 @Table(name = "hab_habilidade")
@@ -20,18 +22,21 @@ public class Habilidade {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "hab_id")
+    @JsonView(View.PersonagemCompleto.class)
     private Long id;
 
     @Column(name = "hab_nome")
+    @JsonView(View.PersonagemSimplificado.class)
     private String nome;
 
     @Column(name = "hab_descricao")
+    @JsonView(View.PersonagemSimplificado.class)
     private String descricao;
 
     @Column(name = "hab_elemento")
+    @JsonView(View.PersonagemSimplificado.class)
     private String elemento;
 
-    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "habilidades")
     private Set<Personagem> personagens;
 

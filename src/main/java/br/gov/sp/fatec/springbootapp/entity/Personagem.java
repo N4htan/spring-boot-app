@@ -15,6 +15,10 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import br.gov.sp.fatec.springbootapp.controller.View;
+
 @Entity
 @Table(name = "per_personagem")
 public class Personagem {
@@ -22,21 +26,26 @@ public class Personagem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "per_id")
+    @JsonView(View.PersonagemCompleto.class)
     private long id;
 
     @Column(name = "per_nome")
+    @JsonView(View.PersonagemSimplificado.class)
     private String nome;
 
     @Column(name = "per_data_nascimento")
+    @JsonView(View.PersonagemCompleto.class)
     private Date aniversario;
     
     @Column(name = "per_nivel")
+    @JsonView(View.PersonagemSimplificado.class)
     private int nivel;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "pha_personagem_habilidade",
         joinColumns = { @JoinColumn(name = "per_id") },
         inverseJoinColumns = { @JoinColumn(name = "hab_id") })
+    @JsonView(View.PersonagemSimplificado.class)
     private Set<Habilidade> habilidades;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "jogador")
