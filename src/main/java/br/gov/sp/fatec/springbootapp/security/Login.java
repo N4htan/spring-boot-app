@@ -1,3 +1,5 @@
+package br.gov.sp.fatec.springbootapp.security;
+
 public class Login {
 
     private String username;
