@@ -78,4 +78,11 @@ public class Usuario {
         this.senha = senha;
     }
 
+    public Set<Autorizacao> getAutorizacoes() {
+        return this.autorizacoes;
+    }
+
+    public void setAutorizacoes(Set<Autorizacao> autorizacoes) {
+        this.autorizacoes = autorizacoes;
+    }
 }

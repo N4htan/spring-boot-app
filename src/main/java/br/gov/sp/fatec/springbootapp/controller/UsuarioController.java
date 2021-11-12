@@ -34,4 +34,6 @@ public class UsuarioController {
     public Usuario novoUsuario(@RequestBody Usuario usuario) {
         return RPGService.novoUsuario(usuario.getNome(), usuario.getEmail(), usuario.getSenha(), "ROLE_USUARIO");
     }
+
+    
 }

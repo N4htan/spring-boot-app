@@ -14,6 +14,7 @@ public interface RPGService extends UserDetailsService {
     public List<Personagem> buscarTodosPersonagens();
 
     public Usuario novoUsuario(String nome, String email, String senha, String autorizacao);
-
+    
     public List<Usuario> buscarTodosUsuarios();
+
 }
