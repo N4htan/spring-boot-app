@@ -1,15 +1,18 @@
 package br.gov.sp.fatec.springbootapp.service;
 
+import java.util.HashSet;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import br.gov.sp.fatec.springbootapp.entity.Autorizacao;
 import br.gov.sp.fatec.springbootapp.entity.Usuario;
@@ -34,9 +37,14 @@ public class RPGServiceImpl implements RPGService{
 
     @Autowired
     AutorizacaoRepository autorizacaoRepo;
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
     
     @Override
+    
     @Transactional
+    @PreAuthorize("hasRole('ADMIN')")
     public Personagem novoPersonagem(String nome, int nivel, Date aniversario, String descricao, String nomeHab, String elemento){
         Habilidade habilidade = habilidadeRepo.findByNome(nomeHab);
         if(habilidade == null) {
@@ -59,11 +67,13 @@ public class RPGServiceImpl implements RPGService{
     }
 
     @Override
+    @PreAuthorize("hasAnyRole('ADMIN','USUARIO')")
     public List<Personagem> buscarTodosPersonagens(){
         return personagemRepo.findAll();
     }
 
     @Override
+    @PreAuthorize("hasRole('ADMIN')")
     @Transactional
     public Usuario novoUsuario(String nome, String email, String senha, String autorizacao) {
         
@@ -77,13 +87,14 @@ public class RPGServiceImpl implements RPGService{
         Usuario usuario = new Usuario();
         usuario.setNome(nome);
         usuario.setEmail(email);
-        usuario.setSenha(senha);
+        usuario.setSenha(passwordEncoder.encode(senha));
         usuarioRepo.save(usuario);
 
         return usuario;
     }
 
     @Override
+    @PreAuthorize("hasAnyRole('ADMIN','USUARIO')")
     public List<Usuario> buscarTodosUsuarios() {
         return usuarioRepo.findAll();
     }
