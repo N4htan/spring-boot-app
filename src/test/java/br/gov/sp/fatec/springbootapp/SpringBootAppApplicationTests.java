@@ -20,7 +20,7 @@ import br.gov.sp.fatec.springbootapp.entity.Personagem;
 import br.gov.sp.fatec.springbootapp.repository.BiografiaRepository;
 import br.gov.sp.fatec.springbootapp.repository.HabilidadeRepository;
 import br.gov.sp.fatec.springbootapp.repository.PersonagemRepository;
-import br.gov.sp.fatec.springbootapp.service.RPGService;
+import br.gov.sp.fatec.springbootapp.service.SegurancaService;
 
 @SpringBootTest
 @Transactional
@@ -37,7 +37,7 @@ class SpringBootAppApplicationTests {
 	private BiografiaRepository biografiaRepo;
 
 	@Autowired
-	private RPGService rpgService;
+	private SegurancaService segurancaService;
 
 	@Test
 	void contextLoads() {
@@ -155,7 +155,7 @@ class SpringBootAppApplicationTests {
 
 	@Test
 	void novoPerTest() throws ParseException{
-		rpgService.novoPersonagem("Mago", 1, new SimpleDateFormat("dd/MM/yyyy").parse("12/16/2015"), "Uma faixa brilhante passa de seu dedo indicador até um ponto que você escolhe dentro do alcance e então floresce com um rugido baixo em uma explosão de chamas.", "Fireball", "Fogo");
+		segurancaService.novoPersonagem("Mago", 1, new SimpleDateFormat("dd/MM/yyyy").parse("12/16/2015"), "Uma faixa brilhante passa de seu dedo indicador até um ponto que você escolhe dentro do alcance e então floresce com um rugido baixo em uma explosão de chamas.", "Fireball", "Fogo");
 		
 		assertNotNull(personagemRepo.findByNome("Mago"));
 	}

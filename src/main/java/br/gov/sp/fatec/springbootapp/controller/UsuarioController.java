@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.gov.sp.fatec.springbootapp.entity.Usuario;
-import br.gov.sp.fatec.springbootapp.service.RPGService;
+import br.gov.sp.fatec.springbootapp.service.SegurancaService;
 
 @RestController
 @CrossOrigin
@@ -21,18 +21,18 @@ import br.gov.sp.fatec.springbootapp.service.RPGService;
 public class UsuarioController {
     
     @Autowired
-    private RPGService RPGService;
+    private SegurancaService segurancaService;
 
     @GetMapping
     @JsonView(View.UsuarioSimplificado.class)
     public List<Usuario> buscarTodosUsuarios() {
-        return RPGService.buscarTodosUsuarios();
+        return segurancaService.buscarTodosUsuarios();
     }
 
     @PostMapping
     @JsonView(View.UsuarioCompleto.class)
     public Usuario novoUsuario(@RequestBody Usuario usuario) {
-        return RPGService.novoUsuario(usuario.getNome(), usuario.getEmail(), usuario.getSenha(), "ROLE_USUARIO");
+        return segurancaService.novoUsuario(usuario.getNome(), usuario.getEmail(), usuario.getSenha(), "ROLE_USUARIO");
     }
 
     

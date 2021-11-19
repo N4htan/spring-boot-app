@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.gov.sp.fatec.springbootapp.entity.Personagem;
-import br.gov.sp.fatec.springbootapp.service.RPGService;
+import br.gov.sp.fatec.springbootapp.service.SegurancaService;
 
 @RestController
 @CrossOrigin
@@ -23,17 +23,17 @@ import br.gov.sp.fatec.springbootapp.service.RPGService;
 public class PersonagemController {
     
     @Autowired
-    private RPGService rpgService;
+    private SegurancaService segurancaService;
 
     @GetMapping
     @JsonView(View.PersonagemSimplificado.class)
     public List<Personagem> buscarTodosPersonagens() {
-        return rpgService.buscarTodosPersonagens();        
+        return segurancaService.buscarTodosPersonagens();        
     }
 
     @PostMapping
     @JsonView(View.PersonagemCompleto.class)
     public Personagem novoPersonagem(@RequestBody Personagem personagem) throws ParseException{
-        return rpgService.novoPersonagem(personagem.getNome(), personagem.getNivel(), new SimpleDateFormat("dd/MM/yyyy").parse("12/16/2015"), "HABILIDADE PADRAO", "PADRAO", "PADRAO");
+        return segurancaService.novoPersonagem(personagem.getNome(), personagem.getNivel(), new SimpleDateFormat("dd/MM/yyyy").parse("12/16/2015"), "HABILIDADE PADRAO", "PADRAO", "PADRAO");
     }
 }

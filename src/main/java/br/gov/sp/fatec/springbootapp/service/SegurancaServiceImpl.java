@@ -24,7 +24,7 @@ import br.gov.sp.fatec.springbootapp.repository.PersonagemRepository;
 import br.gov.sp.fatec.springbootapp.repository.UsuarioRepository;
 
 @Service
-public class RPGServiceImpl implements RPGService{
+public class SegurancaServiceImpl implements SegurancaService{
 
     @Autowired
     PersonagemRepository personagemRepo;
