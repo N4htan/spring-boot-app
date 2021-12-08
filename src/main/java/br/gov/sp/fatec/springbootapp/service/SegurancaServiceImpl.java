@@ -60,6 +60,8 @@ public class SegurancaServiceImpl implements SegurancaService{
         personagem.setNome(nome);
         personagem.setAniversario(aniversario);
         personagem.setNivel(nivel);
+        personagem.setHabilidades(new HashSet<Habilidade>());
+        personagem.getHabilidades().add(habilidade);
         personagemRepo.save(personagem);
 
         return personagem;
@@ -88,6 +90,8 @@ public class SegurancaServiceImpl implements SegurancaService{
         usuario.setNome(nome);
         usuario.setEmail(email);
         usuario.setSenha(passwordEncoder.encode(senha));
+        usuario.setAutorizacoes(new HashSet<Autorizacao>());
+        usuario.getAutorizacoes().add(aut);
         usuarioRepo.save(usuario);
 
         return usuario;
