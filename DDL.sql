@@ -16,18 +16,6 @@ create table jog_jogador (
     unique key uni_jogador_nickname (jog_nickname)
 );
 
-create table jer_jogador_personagem (
-    jog_id bigint unsigned not null,
-    per_id bigint unsigned not null,
-    primary key (jog_id, per_id),
-    foreign key jer_jog_fk (jog_id)
-        references jog_jogador (jog_id)
-        on delete restrict on update cascade,
-    foreign key jer_per_fk (per_id)
-        references per_personagem (per_id)
-        on delete restrict on update cascade
-);
-
 create table per_personagem (
     per_id bigint unsigned not null auto_increment,
     per_nome varchar(100) not null,
@@ -44,6 +32,18 @@ create table hab_habilidade (
     hab_elemento varchar(10) not null,
     primary key (hab_id),
     unique key uni_habilidade_nome (hab_nome)
+);
+
+create table jer_jogador_personagem (
+    jog_id bigint unsigned not null,
+    per_id bigint unsigned not null,
+    primary key (jog_id, per_id),
+    foreign key jer_jog_fk (jog_id)
+        references jog_jogador (jog_id)
+        on delete restrict on update cascade,
+    foreign key jer_per_fk (per_id)
+        references per_personagem (per_id)
+        on delete restrict on update cascade
 );
 
 create table pha_personagem_habilidade (
