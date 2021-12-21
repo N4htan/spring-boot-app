@@ -1,5 +1,3 @@
-drop schema biografia;
-
 create schema biografia;
 
 create user 'user'@'localhost' identified by 'pass123';
