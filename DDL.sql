@@ -6,6 +6,27 @@ grant select, insert, delete, update on biografia.* to user@'localhost';
 
 use biografia;
 
+create table jog_jogador (
+    jog_id bigint unsigned not null auto_increment,
+    jog_nome varchar(100) not null,
+    jog_idade int not null,
+    jog_funcao varchar(50) not null,
+    jog_tempoJogando int not null,
+    primary key (jog_id),
+);
+
+create table jer_jogador_personagem (
+    jog_id bigint unsigned not null,
+    per_id bigint unsigned not null,
+    primary key (jog_id, per_id),
+    foreign key jer_jog_fk (jog_id)
+        references jog_jogador (jog_id)
+        on delete restrict on update cascade,
+    foreign key jer_per_fk (per_id)
+        references per_personagem (per_id)
+        on delete restrict on update cascade
+);
+
 create table per_personagem (
     per_id bigint unsigned not null auto_increment,
     per_nome varchar(100) not null,
