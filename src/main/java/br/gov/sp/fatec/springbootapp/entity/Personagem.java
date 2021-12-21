@@ -42,6 +42,13 @@ public class Personagem {
     private int nivel;
 
     @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "jer_jogador_personagem",
+        joinColumns = { @JoinColumn(name = "jog_id") },
+        inverseJoinColumns = { @JoinColumn(name = "per_id") })
+    @JsonView(View.JogadorSimplificado.class)    
+    private Set<Jogador> jogadores;
+
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "pha_personagem_habilidade",
         joinColumns = { @JoinColumn(name = "per_id") },
         inverseJoinColumns = { @JoinColumn(name = "hab_id") })
@@ -83,6 +90,14 @@ public class Personagem {
         this.nivel = nivel;
     }
 
+    public Set<Jogador> getJogadores() {
+        return jogadores;
+    }
+
+    public void setJogadores(Set<Jogador> jogadores) {
+        this.jogadores = jogadores;
+    }
+
     public Set<Habilidade> getHabilidades() {
         return habilidades;
     }
@@ -98,5 +113,7 @@ public class Personagem {
     public void setBiografias(Set<Biografia> biografias) {
         this.biografias = biografias;
     }
+
+    
     
 }

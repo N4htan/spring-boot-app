@@ -8,5 +8,9 @@ public class View {
 
     public static class UsuarioSimplificado {};
 
-    public static class UsuarioCompleto extends UsuarioSimplificado {};        
+    public static class UsuarioCompleto extends UsuarioSimplificado {};
+    
+    public static class JogadorSimplificado {};
+
+    public static class JogadorCompleto extends JogadorSimplificado {};
 }

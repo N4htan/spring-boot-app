@@ -8,7 +8,7 @@ import br.gov.sp.fatec.springbootapp.entity.Jogador;
 
 public interface JogadorRepository extends JpaRepository<Jogador, Long>{
 
-    public Jogador findByNome(String nome);
+    public Jogador findByNick(String nick);
 
-    public List<Jogador> findByNomeContainsOrFuncao(String nome, String funcao);
+    public List<Jogador> findByNickContainsOrFuncao(String nick, String funcao);
 }

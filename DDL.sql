@@ -1,3 +1,5 @@
+drop schema biografia;
+
 create schema biografia;
 
 create user 'user'@'localhost' identified by 'pass123';
@@ -11,8 +13,9 @@ create table jog_jogador (
     jog_nome varchar(100) not null,
     jog_idade int not null,
     jog_funcao varchar(50) not null,
-    jog_tempoJogando int not null,
+    jog_nickname varchar(50) not null,
     primary key (jog_id),
+    unique key uni_jogador_nickname (jog_nickname)
 );
 
 create table jer_jogador_personagem (
